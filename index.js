@@ -27,7 +27,25 @@ app.get('/annotation', (req, res) => {
   // Extract the data array from the output object
   const ann = output.data.filter(x => x.channel === 'annot');
   // Send the limitedData as the response
-  res.json({ data: ann[0] });
+  res.json({ data: ann });
+});
+
+app.get('/volume', (req, res) => {
+  // Read the output.json file
+  const output = require('./jsonformatter.json');
+
+  // Extract the data array from the output object
+  const volume = output.data.filter(x => x.channel === 'volume');
+  // Send the limitedData as the response
+  res.json({ data: volume });
+});
+
+app.get('/', (req, res) => {
+  // Read the output.json file
+  const output = require('./jsonformatter.json');
+
+  // Send the limitedData as the response
+  res.json({ data: output.data });
 });
 
 app.listen(3000, () => {
