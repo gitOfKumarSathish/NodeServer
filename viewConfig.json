@@ -1,0 +1,27 @@
+[
+    {
+        "chart": "chart1",
+        "chart_type": "column",
+        "x_label": "Time Series",
+        "y_label": "Value Series",
+        "src_channels": [
+            {
+                "channel": "volume"
+            },
+            {
+                "channel": "temp"
+            }
+        ]
+    },
+    {
+        "chart": "chart2",
+        "chart_type": "xrange",
+        "x_label": "Time Series",
+        "y_label": "tag",
+        "src_channels": [
+            {
+                "channel": "annotation"
+            }
+        ]
+    }
+]

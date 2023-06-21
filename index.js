@@ -40,6 +40,23 @@ app.get('/volume', (req, res) => {
   res.json({ data: volume });
 });
 
+
+app.get('/temp', (req, res) => {
+  // Read the output.json file
+  const output = require('./jsonformatter.json');
+
+  // Extract the data array from the output object
+  const temp = output.data.filter(x => x.channel === 'temp');
+  // Send the limitedData as the response
+  res.json({ data: temp });
+});
+app.get('/viewConfig', (req, res) => {
+  // Read the output.json file
+  const output = require('./viewConfig.json');
+  // Send the limitedData as the response
+  res.json({ data: output });
+});
+
 app.get('/', (req, res) => {
   // Read the output.json file
   const output = require('./jsonformatter.json');
