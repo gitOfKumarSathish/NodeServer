@@ -2,19 +2,41 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 app.use(cors());
-app.get('/data', (req, res) => {
+
+
+app.get('/wf', (req, res) => {
   // Read the output.json file
   const output = require('./jsonformatter.json');
 
   // Extract the data array from the output object
-  const dataArray = output.data[1].data;
+  // const dataArray = output.data[1].data;
+  const dataArray = output.data.filter(x => x.channel === 'wf');
 
   // Get the limit from the URL parameter, or set a default value
   const from = parseInt(req.query.from) || 0;
   const to = parseInt(req.query.to) || 1000;
 
   // Create a new limitedData array with the desired size
-  const limitedData = dataArray.slice(from, to);
+  const limitedData = dataArray[0].data.slice(from, to);
+
+  // Send the limitedData as the response
+  res.json({ data: limitedData });
+});
+
+app.get('/plc', (req, res) => {
+  // Read the output.json file
+  const output = require('./jsonformatter.json');
+
+  // Extract the data array from the output object
+  // const dataArray = output.data[1].data;
+  const dataArray = output.data.filter(x => x.channel === 'plc');
+
+  // Get the limit from the URL parameter, or set a default value
+  const from = parseInt(req.query.from) || 0;
+  const to = parseInt(req.query.to) || 1000;
+
+  // Create a new limitedData array with the desired size
+  const limitedData = dataArray[0].data.slice(from, to);
 
   // Send the limitedData as the response
   res.json({ data: limitedData });
@@ -22,33 +44,52 @@ app.get('/data', (req, res) => {
 
 app.get('/annotation', (req, res) => {
   // Read the output.json file
-  const output = require('./jsonformatter.json');
+  const annotOutput = require('./Annot.json');
 
   // Extract the data array from the output object
-  const ann = output.data.filter(x => x.channel === 'annot');
+  const ann = annotOutput.data.filter(x => x.channel === 'annot');
+
+  // Get the limit from the URL parameter, or set a default value
+  const from = parseInt(req.query.from) || 0;
+  const to = parseInt(req.query.to) || 100;
+
+  // Create a new limitedData array with the desired size
+  const limitedData = ann[0].data.slice(from, to);
   // Send the limitedData as the response
-  res.json({ data: ann });
+  res.json({ data: limitedData });
 });
 
 app.get('/volume', (req, res) => {
   // Read the output.json file
-  const output = require('./jsonformatter.json');
-
-  // Extract the data array from the output object
+  const output = require('./volumn.json');
+  // Extract the data array fro console.log('ann', ann);m the output object
   const volume = output.data.filter(x => x.channel === 'volume');
+  // Get the limit from the URL parameter, or set a default value
+  const from = parseInt(req.query.from) || 0;
+  const to = parseInt(req.query.to) || 100;
+
+  // Create a new limitedData array with the desired size
+  const limitedData = volume[0].data.slice(from, to);
   // Send the limitedData as the response
-  res.json({ data: volume });
+  res.json({ data: limitedData });
 });
 
 
 app.get('/temp', (req, res) => {
   // Read the output.json file
-  const output = require('./jsonformatter.json');
+  const output = require('./temp.json');
 
   // Extract the data array from the output object
   const temp = output.data.filter(x => x.channel === 'temp');
+
+  // Get the limit from the URL parameter, or set a default value
+  const from = parseInt(req.query.from) || 0;
+  const to = parseInt(req.query.to) || 100;
+
+  // Create a new limitedData array with the desired size
+  const limitedData = temp[0].data.slice(from, to);
   // Send the limitedData as the response
-  res.json({ data: temp });
+  res.json({ data: limitedData });
 });
 app.get('/viewConfig', (req, res) => {
   // Read the output.json file
@@ -63,6 +104,22 @@ app.get('/', (req, res) => {
 
   // Send the limitedData as the response
   res.json({ data: output.data });
+});
+
+
+app.get('/mixed', (req, res) => {
+  // Read the output.json file
+  const output = require('./mixed.json');
+  // Extract the data array fro console.log('ann', ann);m the output object
+  const mixed = output.data.filter(x => x.channel === 'mixed');
+  // Get the limit from the URL parameter, or set a default value
+  const from = parseInt(req.query.from) || 0;
+  const to = parseInt(req.query.to) || 1000;
+
+  // Create a new limitedData array with the desired size
+  const limitedData = mixed[0].data.slice(from, to);
+  // Send the limitedData as the response
+  res.json({ data: limitedData });
 });
 
 app.listen(3000, () => {
