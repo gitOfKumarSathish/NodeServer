@@ -1,27 +1,12 @@
 [
     {
-        "chart_title": "chart3",
-        "data_type": "mixed",
-        "chart_type": "line",
-        "x_label": "Time",
-        "y_label": "Value",
-        "miniMap": true,
-        "data_limit": 1000,
-        "src_channels": [
-            {
-                "channel": "mixed",
-                "name": "mixed1"
-            }
-        ]
-    },
-    {
         "chart_title": "chart1",
         "data_type": "wf",
         "chart_type": "line",
         "x_label": "Time",
         "y_label": "Value",
         "miniMap": true,
-        "data_limit": 5000,
+        "data_limit": 1000,
         "src_channels": [
             {
                 "channel": "wf",
@@ -45,6 +30,36 @@
         ]
     },
     {
+        "chart_title": "chart3",
+        "data_type": "mixed",
+        "chart_type": "line",
+        "x_label": "Time",
+        "y_label": "Value",
+        "miniMap": true,
+        "data_limit": 1000,
+        "src_channels": [
+            {
+                "channel": "mixed",
+                "name": "mixed1"
+            }
+        ]
+    },
+    {
+        "chart_title": "Chart 4",
+        "data_type": "annot",
+        "chart_type": "xrange",
+        "x_label": "Time",
+        "y_label": "Tag",
+        "miniMap": true,
+        "data_limit": 1000,
+        "src_channels": [
+            {
+                "channel": "annotation",
+                "name": "annotation1"
+            }
+        ]
+    },
+    {
         "chart_title": "Multi Channel",
         "data_type": "volume",
         "chart_type": "line",
@@ -60,21 +75,6 @@
             {
                 "channel": "temp",
                 "name": "temperature"
-            }
-        ]
-    },
-    {
-        "chart_title": "Chart 4",
-        "data_type": "annot",
-        "chart_type": "xrange",
-        "x_label": "Time",
-        "y_label": "Tag",
-        "miniMap": false,
-        "data_limit": 1000,
-        "src_channels": [
-            {
-                "channel": "annotation",
-                "name": "annotation1"
             }
         ]
     }

@@ -18,9 +18,14 @@ app.get('/wf', (req, res) => {
 
   // Create a new limitedData array with the desired size
   const limitedData = dataArray[0].data.slice(from, to);
-
+  const wf_Json = {
+    data: dataArray[0].data.slice(from, to),
+    sr: dataArray[0].sr,
+    ts: dataArray[0].ts
+  };
+  // console.log('wf_Json', wf_Json);
   // Send the limitedData as the response
-  res.json({ data: limitedData });
+  res.json({ data: wf_Json });
 });
 
 app.get('/plc', (req, res) => {
