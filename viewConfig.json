@@ -36,6 +36,7 @@
         "x_label": "Time",
         "y_label": "Value",
         "miniMap": true,
+        "plotValue": "std",
         "data_limit": 1000,
         "src_channels": [
             {
