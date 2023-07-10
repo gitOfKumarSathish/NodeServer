@@ -6,7 +6,7 @@ app.use(cors());
 
 app.get('/wf', (req, res) => {
   // Read the output.json file
-  const output = require('./jsonformatter.json');
+  const output = require('./json/jsonformatter.json');
 
   // Extract the data array from the output object
   // const dataArray = output.data[1].data;
@@ -30,7 +30,7 @@ app.get('/wf', (req, res) => {
 
 app.get('/plc', (req, res) => {
   // Read the output.json file
-  const output = require('./jsonformatter.json');
+  const output = require('./json/jsonformatter.json');
 
   // Extract the data array from the output object
   // const dataArray = output.data[1].data;
@@ -49,7 +49,7 @@ app.get('/plc', (req, res) => {
 
 app.get('/annotation', (req, res) => {
   // Read the output.json file
-  const annotOutput = require('./Annot.json');
+  const annotOutput = require('./json/Annot.json');
 
   // Extract the data array from the output object
   const ann = annotOutput.data.filter(x => x.channel === 'annot');
@@ -66,7 +66,7 @@ app.get('/annotation', (req, res) => {
 
 app.get('/volume', (req, res) => {
   // Read the output.json file
-  const output = require('./volumn.json');
+  const output = require('./json/volumn.json');
   // Extract the data array fro console.log('ann', ann);m the output object
   const volume = output.data.filter(x => x.channel === 'volume');
   // Get the limit from the URL parameter, or set a default value
@@ -82,7 +82,7 @@ app.get('/volume', (req, res) => {
 
 app.get('/temp', (req, res) => {
   // Read the output.json file
-  const output = require('./temp.json');
+  const output = require('./json/temp.json');
 
   // Extract the data array from the output object
   const temp = output.data.filter(x => x.channel === 'temp');
@@ -98,14 +98,14 @@ app.get('/temp', (req, res) => {
 });
 app.get('/viewConfig', (req, res) => {
   // Read the output.json file
-  const output = require('./viewConfig.json');
+  const output = require('./json/viewConfig.json');
   // Send the limitedData as the response
   res.json({ data: output });
 });
 
 app.get('/', (req, res) => {
   // Read the output.json file
-  const output = require('./jsonformatter.json');
+  const output = require('./json/jsonformatter.json');
 
   // Send the limitedData as the response
   res.json({ data: output.data });
@@ -114,7 +114,7 @@ app.get('/', (req, res) => {
 
 app.get('/mixed', (req, res) => {
   // Read the output.json file
-  const output = require('./mixed.json');
+  const output = require('./json/mixed.json');
   // Extract the data array fro console.log('ann', ann);m the output object
   const mixed = output.data.filter(x => x.channel === 'mixed');
   // Get the limit from the URL parameter, or set a default value
